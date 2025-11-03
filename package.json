@@ -1,0 +1,27 @@
+{
+  "name": "diploma_project",
+  "version": "1.0.0",
+  "description": "This repository has been created for my first ever coding experience for autotests on JS+Playwright",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "testUI": "npx playwright test --ui",
+    "report": "npx playwright show-report"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Honeylol73/Diploma_project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Honeylol73/Diploma_project/issues"
+  },
+  "homepage": "https://github.com/Honeylol73/Diploma_project#readme",
+  "devDependencies": {
+    "@faker-js/faker": "^10.1.0",
+    "@playwright/test": "^1.56.1",
+    "@types/node": "^24.9.2"
+  }
+}
