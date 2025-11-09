@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "npx playwright test",
-    "testUI": "npx playwright test --ui",
-    "report": "npx playwright show-report",
+    "testE2E": "npx playwright test --grep @e2e",
+    "reportAllure": "npx allure generate ./allure-results --single-file --clean -o ./allure-report",
+    "uploadAllure": "npx allure upload allure-results",
+    "serveAllure": "npx allure serve ./allure-results",
     "apitest": "npx playwright test --grep @APISPEC"
   },
   "repository": {
@@ -23,6 +25,11 @@
   "devDependencies": {
     "@faker-js/faker": "^10.1.0",
     "@playwright/test": "^1.56.1",
-    "@types/node": "^24.9.2"
+    "@types/node": "^24.9.2",
+    "allure-commandline": "^2.34.1",
+    "allure-playwright": "^3.4.2"
+  },
+  "dependencies": {
+    "allure": "^3.0.0-beta.22"
   }
 }

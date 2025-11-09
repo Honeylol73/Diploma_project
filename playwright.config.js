@@ -13,9 +13,6 @@ import { defineConfig, devices } from '@playwright/test';
  * @see https://playwright.dev/docs/test-configuration
  */
 export default defineConfig({
-  timeout: 30000,
-  expect: { timeout: 10000},
-
   testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -26,7 +23,15 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 2 : 4,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: [
+    ['list'],
+    ['html', { outputFolder: 'playwright-report' }],
+    ['allure-playwright', {
+      outputFolder: 'allure-results',
+      detail: true,
+      suiteTitle: false
+    }]
+  ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
@@ -35,9 +40,7 @@ export default defineConfig({
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
     apiURL: "https://apichallenges.eviltester.com",
-    // uiURL: "https://realworld.qa.guru/"
-    actionTimeout: 30000,
-    navigationTimeout: 30000,
+    screenshot: 'only-on-failure'
 
   },
 
