@@ -27,11 +27,32 @@ jobs:
 
       - name: Run tests
         run: npm run test
+
+      - name: Generate Allure report
+        run: npx allure awesome ./allure-results --single-file
       
-      - uses: actions/upload-artifact@v4
+      - name: Upload Allure test results
+        uses: actions/upload-artifact@v4
         if: always()
         continue-on-error: true
         with:
           name: allure-results
           path: allure-results
           retention-days: 30
+      
+      - uses: actions/checkout@v4
+        if: always()
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - uses: simple-elf/allure-report-action@master
+        if: always()
+        id: allure-report
+        with:
+          allure_results: allure-results
+          gh_pages: gh-pages
+          allure_report: allure-report
+          allure_history: allure-history
+          keep_reports: 20
