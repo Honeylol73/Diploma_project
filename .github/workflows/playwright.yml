@@ -20,12 +20,10 @@ jobs:
           node-version: lts/*
       
       - name: Install dependencies
-        run: npm i
+        run: npm ci
 
       - name: Install Playwright & Allure
-        run: |
-          npx playwright install --with-deps
-          npm install allure-playwright --save-dev
+        run: npx playwright install --with-deps
 
       - name: Run tests
         run: npm run test
