@@ -11,4 +11,4 @@ allure-report/
 /playwright/.auth/
 .allure/
 allurerc.mjs
-
+.DS_Store
