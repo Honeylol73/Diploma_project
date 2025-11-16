@@ -1,14 +1,15 @@
 import { test as base } from '@playwright/test';
-import { ArticleBuilder } from '../builders/index';
-import { App } from '../../pagesFacade/app.page'; 
+import { ArticleBuilder, UserBuilder } from '../builders/index';
+import { App } from '../../pagesFacade/app.page';
+import { Api } from '../../services/index';
 
 export const test = base.extend({
     authorizedApp: async ({ page }, use) => {
         let authApp = new App(page);
-        const authUser = { 
-            email: 'bald@man.com', 
-            password: 'BB12345' 
-        };
+        const authUser = new UserBuilder()
+        .userEmail()
+        .userPassword()
+        .generate();
         
         await authApp.main.open();
         await authApp.main.gotoLogin();
@@ -41,5 +42,10 @@ export const test = base.extend({
         await app.manage.postNewArticle(newArticle);
 
         await use({ app, newArticle, commentText, editArticleFields });
+    },
+    api: async ({ request }, use) => {
+        const api = new Api(request);
+        
+        await use(api);
     }
 });

@@ -6,6 +6,7 @@ export class SignInPage {
     }
 async signIn(authUser) {
     const { email, password } = authUser;
+
     await this.emailInput.click();
     await this.emailInput.fill(email);
     await this.passwordInput.click();

@@ -3,17 +3,12 @@ import { test } from '../src/helpers/fixtures/index';
 
 test.describe('Пользователь работает с приложением после авторизации', () => {
 
-test.beforeEach(async ({ authorizedApp }) => {
-
-});
-
 test('Пользователь создает новую статью @e2e', async ({
   createArticle
 }) => {
   const { app, newArticle } = createArticle;
   
   await expect(app.home.articleHeadder).toContainText(newArticle.title);
-
 });
 
 test('Пользователь редактирует созданную статью @e2e', async ({
@@ -26,7 +21,6 @@ test('Пользователь редактирует созданную ста�
   await app.manage.editArticle(editArticleFields);
   
   await expect(app.home.articleHeadder).toContainText(editArticleFields.title);
-
 });
 
 test('Пользователь пишет комментарий @e2e', async ({
@@ -38,7 +32,6 @@ test('Пользователь пишет комментарий @e2e', async ({
   await app.edit.writeComment(commentText);
 
   await expect(app.home.articleCommentText).toContainText(commentText.newCommentText);
-
 });
 
 test('Пользователь удаляет свой комментарий @e2e', async ({
@@ -48,12 +41,10 @@ test('Пользователь удаляет свой комментарий @e
 
 // Пишем комментарий
   await app.edit.writeComment(commentText);
-
 // Тут же передумываем и удаляем комментарий
   await app.edit.deleteComment();
 
   await expect(app.home.articleCommentText).toContainText('There are no comments yet...');
-
 });
 
 test('Пользователь удаляет созданную статью @e2e', async ({
@@ -65,7 +56,6 @@ test('Пользователь удаляет созданную статью @e
   await app.edit.deleteArticle();
 
   await expect(app.home.articleCommentText).toContainText('Your Feed');
-
 });
 
 });
