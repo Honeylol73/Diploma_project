@@ -1,10 +1,10 @@
 export class UserBuilder {
     userEmail() {
-        this.email = 'bald@man.com';
+        this.email = process.env.TEST_USER_EMAIL;
         return this;
     }
     userPassword() {
-        this.password = 'BB12345';
+        this.password = process.env.TEST_USER_PASSWORD;
         return this;
     }
     generate() {

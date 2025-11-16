@@ -12,3 +12,6 @@ allure-report/
 .allure/
 allurerc.mjs
 .DS_Store
+*.DS_Store
+.env
+*.env

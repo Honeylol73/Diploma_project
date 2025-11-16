@@ -26,6 +26,11 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run tests
+        env:
+          BASE_URL: ${{ vars.BASE_URL }}
+          API_URL: ${{ vars.API_URL }}
+          TEST_USER_EMAIL: ${{ secrets.TEST_USER_EMAIL }}
+          TEST_USER_PASSWORD: ${{ secrets.TEST_USER_PASSWORD }}
         run: npm run test
 
       - name: Upload artifacts

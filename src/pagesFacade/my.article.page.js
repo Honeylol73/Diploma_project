@@ -24,7 +24,6 @@ export class MyArticle {
     // Удаляем комментарий
     async deleteComment() {
         this.page.once('dialog', dialog => {
-        console.log(`Dialog message: ${dialog.message()}`);
         dialog.accept();
   });
   await this.deleteCommentButton.click();
@@ -33,7 +32,6 @@ export class MyArticle {
     // Удаляем статью
     async deleteArticle() {
         this.page.once('dialog', dialog => {
-        console.log(`Dialog message: ${dialog.message()}`);
         dialog.accept();
   });
   await this.deleteArticleButton.click(); 
