@@ -11,4 +11,10 @@ allure-report/
 /playwright/.auth/
 .allure/
 allurerc.mjs
+.env
+*.env
+.env.local
+.env.*.local
 .DS_Store
+*.DS_Store
+**/.DS_Store
