@@ -37,6 +37,7 @@ test.describe('Challenge', () => {
 // 3
     test('POST Create ToDo with wrong doneStatus', {tag: '@APISPEC'}, async ({ api }, testInfo) => {
 
+        const ERROR_BOOL = 'Failed Validation: doneStatus should be BOOLEAN but was STRING';
         const todo = new ToDoBuilder()
             .addDescription(20)
             .addTitle(30)
@@ -47,12 +48,13 @@ test.describe('Challenge', () => {
         let body = await r.json();
 
         expect(r.status()).toBe(400);
-        expect(body.errorMessages[0]).toBe('Failed Validation: doneStatus should be BOOLEAN but was STRING');
+        expect(body.errorMessages[0]).toBe(ERROR_BOOL);
 
     });
 // 4
     test('POST Create ToDo with too long title', {tag: '@APISPEC'}, async ({ api }, testInfo) => {
 
+        const ERROR_TITLE_LENGTH = 'Failed Validation: Maximum allowable length exceeded for title - maximum allowed is 50';
         const todo = new ToDoBuilder()
             .addDescription(20)
             .addTitle(51)
@@ -63,12 +65,13 @@ test.describe('Challenge', () => {
         let body = await r.json();
 
         expect(r.status()).toBe(400);
-        expect(body.errorMessages[0]).toBe('Failed Validation: Maximum allowable length exceeded for title - maximum allowed is 50');
+        expect(body.errorMessages[0]).toBe(ERROR_TITLE_LENGTH);
 
     });
 // 5
     test('POST Create ToDo with too long description', {tag: '@APISPEC'}, async ({ api }, testInfo) => {
 
+        const ERROR_DESCRIPTION_LENGTH = 'Failed Validation: Maximum allowable length exceeded for description - maximum allowed is 200';
         const todo = new ToDoBuilder()
             .addDescription(201)
             .addTitle(20)
@@ -79,7 +82,7 @@ test.describe('Challenge', () => {
         let body = await r.json();
 
         expect(r.status()).toBe(400);
-        expect(body.errorMessages[0]).toBe('Failed Validation: Maximum allowable length exceeded for description - maximum allowed is 200');
+        expect(body.errorMessages[0]).toBe(ERROR_DESCRIPTION_LENGTH);
 
     });
 // 6

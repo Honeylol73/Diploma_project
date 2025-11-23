@@ -20,7 +20,7 @@ export class ToDoBuilder {
     }
 
     addId (id) {
-        this.priority = faker.string.alpha({length: id})
+        this.id = faker.string.alpha({length: id})
         return this;
     }
 
