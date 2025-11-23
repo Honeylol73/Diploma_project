@@ -7,7 +7,7 @@ export class ChallengerService{
     async post(testInfo) {
         return test.step('POST /challenger', async () => {
             const response = await this.request.post(
-                `${process.env.API_URL}/challenger`
+                `${testInfo.project.use.apiURL}/challenger`
             );
             return response;
         });

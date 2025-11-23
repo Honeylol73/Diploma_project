@@ -23,7 +23,7 @@ export class MyArticle {
 
     // Удаляем комментарий
     async deleteComment() {
-        this.page.once('dialog', dialog => {
+        this.page.on('dialog', dialog => {
         dialog.accept();
   });
   await this.deleteCommentButton.click();
@@ -31,7 +31,7 @@ export class MyArticle {
 
     // Удаляем статью
     async deleteArticle() {
-        this.page.once('dialog', dialog => {
+        this.page.on('dialog', dialog => {
         dialog.accept();
   });
   await this.deleteArticleButton.click(); 
